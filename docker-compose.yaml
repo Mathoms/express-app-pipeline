@@ -1,0 +1,15 @@
+services:
+  web:
+    image: mathoms/app:latest
+    container_name: express-local
+    ports:
+      - "3000:8080"
+    restart: always
+
+  watchtower:
+    image: nickfedor/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 10
+    restart: always
